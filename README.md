@@ -18,7 +18,7 @@ So how might you solve this algorithmically? To answer this, we must go back to 
 
 # Approach
 
-Alright, I don't really care about the history of Nonograms, so let's just talk about the approach. The core of this algorithm is backtracking, but it has to be done a little differently from, say, Sudoku, because in Sudoku what varies between iterations is the value of a cell but here it's grid placement. Sudoku involves trying every number between 1-9 at every cell. Nonogram requires placing each chunk of black squares at every possible position in the row.
+Alright, I don't actually care about the history of Nonograms, so let's just talk about the approach. The core of this algorithm is backtracking, but it has to be done a little differently from, say, Sudoku, because in Sudoku what varies between iterations is the value of a cell but here it's grid placement. Sudoku involves trying every number between 1-9 at every cell. Nonogram requires placing each chunk of black squares at every possible position in the row.
 
 The main algorithm is to iterate through each row, place every chunk in the corresponding row constraint, and if a chunk is unable to be placed, backtrack and change the previous chunk's placement. Placing chunks follows certain guidelines, the most important of which being all chunks must be separated by at least one space. Otherwise, they would be part of the same chunk and constitute one number in the constraint.
 
