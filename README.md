@@ -10,7 +10,7 @@ Okay, let's talk about Nonograms. They look a little like this, an image I rippe
 
 ![image](https://github.com/user-attachments/assets/8504aea0-34ac-4dc0-bda5-e8e88511412b)
 
-If you're not familiar, the goal is to create some sort of pattern of black squares on the grid that satisfies the constraints they give (how quaint, foreshadowing). The constraints come in the form of numbers above and to the left of the grid. They specify the sizes of chunks of black squares. These chunks must be placed at least one square apart, and must fit completely in the grid. To better visualize this, here's the solved version of the above puzzle. The first row has a chunk of 3, the second row has a chunk of 1, the fifth row has a chunk of 2 and a chunk of 1, etc.
+If you're not familiar, the goal is to create some sort of pattern of black squares on the grid that satisfies the constraints they give. The constraints come in the form of numbers above and to the left of the grid. They specify the sizes of chunks of black squares. These chunks must be placed at least one square apart, and must fit completely in the grid. To better visualize this, here's the solved version of the above puzzle. The first row has a chunk of 3, the second row has a chunk of 1, the fifth row has a chunk of 2 and a chunk of 1, etc.
 
 ![image](https://github.com/user-attachments/assets/0395c741-c456-47ac-90b0-8d142fd9ff3c)
 
