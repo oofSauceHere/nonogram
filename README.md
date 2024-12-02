@@ -24,7 +24,7 @@ The main algorithm is to iterate through each row, place every chunk in the corr
 
 # Chunk Placement
 
-Say we're given a grid of size 10x10, and the first row has constraints 3, 2, and 1. This means three distinct chunks. Consider only 5. Which spaces can we place it on? For simplicity, let's define its placement based on its leftmost cell. This seems easy, it has (10 - 0) - 3 + 1 = 8 possible placements. (10 - 0) is written this way to highlight that the chunk's leftmost position is 0 from the left of the grid. This is important for later, as the second and third chunk start farther from the left.
+Say we're given a grid of size 10x10, and the first row has constraints 3, 2, and 1. This means three distinct chunks. Consider only 3. Which spaces can we place it on? For simplicity, let's define its placement based on its leftmost cell. This seems easy, it has (10 - 0) - 3 + 1 = 8 possible placements. (10 - 0) is written this way to highlight that the chunk's leftmost position is 0 from the left of the grid. This is important for later, as the second and third chunk start farther from the left.
 
 But wait. If the 3 chunk is placed too far to the right, the 2 and 1 chunks can't be placed. Order matters here, so we can't place those two chunks before the 3. So how do we figure out the possible range for the 3 chunk? It ends up being (10 - 0) - 3 + 1 - (1 + 1) - (2 + 1) = 8 - 2 - 3 = 3 cells. (1 + 1) and (2 + 1) account for the 2 and 1 chunks at their rightmost positions, tacking on the extra spaces they need to the left. The 2 chunk will have a range of (10 - (3 + 1)) - 2 + 1 - (1 + 1) = 6 - 1 - 2 = 3 cells. I shall leave the 1 chunk as an exercise for the reader, though I really don't care if you do it or not.
 
