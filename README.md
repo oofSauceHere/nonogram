@@ -42,7 +42,7 @@ Wait, no, wrong image. Consider this board state:
 
 We can easily tell this is valid, but the computer can't because the computer is stupid. What we need to understand is that in order to check a chunk placement, we only need to consider the columns it covers. Any given placement is guaranteed to satisfy row constraints because our algorithm places chunks with them in mind. Let's iterate through each column in the chunk that was just placed and search all cells above it (there won't be any below because our algorithm places chunks top down). The most recent chunk in this case was the 4-long one. Its first column features a 1 2 constraint, but currently we read a 1 1. Uh oh, is this bad?
 
-It's actually fine for the bottommost number to be less than its corresponding constraint, because more chunks may be placed below it that complete the constraint. If this wasn't the bottommost chunk, we'd catch it and invalidate it, but it isn't. We can go ahead and move on; everything else ends up being fine. Now consider this board state:
+No! It's actually fine for the bottommost number to be less than its corresponding constraint, because more chunks may be placed below it that complete the constraint. If this wasn't the bottommost chunk, we'd catch it and invalidate it, but it isn't. We can go ahead and move on; everything else ends up being fine. Now consider this board state:
 
 ![image](https://github.com/user-attachments/assets/854fc4f3-da03-4dc3-96a6-967684dff835)
 
