@@ -4,7 +4,7 @@ A program that solves any size nonogram puzzle using a constraint satisfaction a
 
 ---
 
-# Intro
+## Intro
 
 Okay, let's talk about Nonograms. They look a little like this, an image I ripped off this [handy site](https://www.puzzle-nonograms.com/) you can generate and play them on:
 
@@ -16,21 +16,21 @@ If you're not familiar, the goal is to create some sort of pattern of black squa
 
 So how might you solve this algorithmically? To answer this, we must go back to 1987, the birth-year of Nonograms.
 
-# Approach
+## Approach
 
-Alright, I don't actually care about the history of Nonograms, so let's just talk about the approach. The core of this algorithm is backtracking, but it has to be done a little differently from, say, Sudoku, because in Sudoku what varies between iterations is the value of a cell but here it's grid placement. Sudoku involves trying every number between 1-9 at every cell. Nonogram requires placing each chunk of black squares at every possible position in the row.
+Alright, I don't actually know anything about the history of Nonograms, so let's just talk about the approach. The core of this algorithm is backtracking, but it has to be done a little differently from, say, Sudoku, because in Sudoku what varies between iterations is the value of a cell but here it's grid placement. Sudoku involves trying every number between 1-9 at every cell. Nonogram requires placing each chunk of black squares at every possible position in the row.
 
 The main algorithm is to iterate through each row, place every chunk in the corresponding row constraint, and if a chunk is unable to be placed, backtrack and change the previous chunk's placement. Placing chunks follows certain guidelines, the most important of which being all chunks must be separated by at least one space. Otherwise, they would be part of the same chunk and constitute one number in the constraint.
 
-# Chunk Placement
+## Chunk Placement
 
-Say we're given a grid of size 10x10, and the first row has constraints 3, 2, and 1. This means three distinct chunks. Consider only 3. Which spaces can we place it on? For simplicity, let's define its placement based on its leftmost cell. This seems easy, it has (10 - 0) - 3 + 1 = 8 possible placements. (10 - 0) is written this way to highlight that the chunk's leftmost position is 0 from the left of the grid. This is important for later, as the second and third chunk start farther from the left.
+Say we're given a grid of size 10x10, and the first row has constraints 3, 2, and 1. This means three distinct chunks. Consider only 3. Which spaces can we place it on? For simplicity, let's define its placement based on its leftmost cell. This seems easy: it has (10 - 0) - 3 + 1 = 8 possible placements. (10 - 0) is written this way to highlight that the chunk's leftmost position is 0 from the left of the grid. This is important for later, as the second and third chunk start farther from the left.
 
 But wait. If the 3 chunk is placed too far to the right, the 2 and 1 chunks can't be placed. Order matters here, so we can't place those two chunks before the 3. So how do we figure out the possible range for the 3 chunk? It ends up being (10 - 0) - 3 + 1 - (1 + 1) - (2 + 1) = 8 - 2 - 3 = 3 cells. (1 + 1) and (2 + 1) account for the 2 and 1 chunks at their rightmost positions, tacking on the extra spaces they need to the left. The 2 chunk will have a range of (10 - (3 + 1)) - 2 + 1 - (1 + 1) = 6 - 1 - 2 = 3 cells. I shall leave the 1 chunk as an exercise for the reader, though I really don't care if you do it or not.
 
 This simple arithmetic defines the range for any chunk given its starting position and all chunk sizes that come after it. The algorithm will run through all possible chunk placements per row by testing each chunk at every position in its range. If any chunk reaches the end of its range, we backtrack to the previous chunk and move it up one space. If no placements are possible for the row, we backtrack to the previous row.
 
-# Validity Checking
+## Validity Checking
 
 We've yet to go over how to check if a board is even valid. Consider this board state:
 
