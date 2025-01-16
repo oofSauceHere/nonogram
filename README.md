@@ -36,7 +36,7 @@ We've yet to go over how to check if a board is even valid. Consider this board 
 
 ![image](https://github.com/user-attachments/assets/bd0e7ab9-0065-4bc8-a39c-7595f1d430a5)
 
-Wait, no, wrong image. Consider this board state:
+That's not the right image. Consider this board state:
 
 ![image](https://github.com/user-attachments/assets/e50e6f6e-6c4e-473d-b213-0baf04f5cbbd)
 
